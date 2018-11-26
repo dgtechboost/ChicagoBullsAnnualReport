@@ -1,11 +1,20 @@
 ﻿@model IEnumerable<ChicagoBullsAnnualReport.Models.Player>
-@*@model IEnumerable<ChicagoBullsAnnualReport.Domain.Models.Player>*@
 
 @{
     ViewBag.Title = "Index";
+    var jsonFileLocation = ViewBag.JsonFileLocation;
+
 }
 
-<h2>Index</h2>
+<h2>Chicago Player Report</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            You can find generated json report at this location: <strong> @jsonFileLocation</strong>
+        </p>
+    </div>
+</div>
 
 <p>
     @Html.ActionLink("Create New", "Create")
