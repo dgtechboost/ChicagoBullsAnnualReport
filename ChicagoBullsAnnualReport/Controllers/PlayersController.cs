@@ -1,5 +1,7 @@
 ﻿using ChicagoBullsAnnualReport.Core;
 using ChicagoBullsAnnualReport.Mapper;
+using System;
+using System.IO;
 using System.Web.Mvc;
 
 namespace ChicagoBullsAnnualReport.Controllers
@@ -27,6 +29,7 @@ namespace ChicagoBullsAnnualReport.Controllers
             var mapPlayers = _reportHelper.MapCSVDataToModel(processedData);
             var mapDomainPlayerToMvcModel = _modelMapper.MapDomainModels(mapPlayers);
             _reportBuilder.BuildReport(mapPlayers);
+            ViewBag.JsonFileLocation = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Artefacts\", "chicago-bulls.json");
             return View(mapDomainPlayerToMvcModel);
         }
 
